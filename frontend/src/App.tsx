@@ -7,7 +7,7 @@ import { FactoryBuilderPage } from "./pages/FactoryBuilderPage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen bg-industrial-bg flex flex-col font-sans">
         <Header />
 
