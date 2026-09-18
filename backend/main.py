@@ -5,7 +5,7 @@ from backend.database.connection import init_db
 from backend.api import routes_line, routes_simulation, routes_history
 
 app = FastAPI(
-    title="FORGEFLOW TWIN API",
+    title="FORGEFLOW API",
     description="Digital Twin Simulation Engine for Production Line Bottleneck Analysis",
     version="1.0.0"
 )
@@ -25,7 +25,7 @@ def startup_event():
 
 @app.get("/api/health")
 def health_check():
-    return {"status": "ok", "message": "FORGEFLOW TWIN API is running"}
+    return {"status": "ok", "message": "FORGEFLOW API is running"}
 
 app.include_router(routes_line.router, prefix="/api/line", tags=["Line Configuration"])
 app.include_router(routes_simulation.router, prefix="/api/simulation", tags=["Simulation"])
