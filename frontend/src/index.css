@@ -1,22 +1,86 @@
 @import "tailwindcss";
 
 @theme {
-  --color-industrial-bg: #18181b; /* zinc-900 */
-  --color-industrial-panel: #27272a; /* zinc-800 */
-  --color-industrial-border: #3f3f46; /* zinc-700 */
-  --color-industrial-text: #f4f4f5; /* zinc-50 */
-  --color-industrial-muted: #a1a1aa; /* zinc-400 */
-  --color-industrial-accent: #3b82f6; /* blue-500 */
-  --color-industrial-running: #10b981; /* emerald-500 */
-  --color-industrial-down: #ef4444; /* red-500 */
-  --color-industrial-starved: #eab308; /* yellow-500 */
-  --color-industrial-blocked: #f97316; /* orange-500 */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+
+  /* Keep legacy colors mapped for backwards compatibility during transition */
+  --color-industrial-bg: var(--background);
+  --color-industrial-panel: var(--surface);
+  --color-industrial-border: var(--border);
+  --color-industrial-text: var(--foreground);
+  --color-industrial-muted: var(--muted);
+  --color-industrial-accent: var(--primary);
+  --color-industrial-running: var(--success);
+  --color-industrial-down: var(--danger);
+  --color-industrial-starved: var(--warning);
+  --color-industrial-blocked: var(--primary); /* orange-ish */
 }
 
 @layer base {
+  :root {
+    /* LIGHT THEME (Warm + Bright) */
+    --background: #faf9f6; /* warm ivory */
+    --foreground: #2d2a26; /* deep charcoal */
+    --surface: #ffffff; /* warm white */
+    --surface-elevated: #f5f3f0;
+    --primary: #d97706; /* industrial amber/orange */
+    --primary-foreground: #ffffff;
+    --secondary: #e5e5e5;
+    --muted: #737373; /* warm neutral */
+    --border: #e5e0d8;
+    
+    --success: #16a34a;
+    --warning: #eab308;
+    --danger: #dc2626;
+    --info: #2563eb;
+
+    --chart-1: #d97706;
+    --chart-2: #0284c7;
+    --chart-3: #16a34a;
+  }
+
+  .dark {
+    /* DARK THEME (Premium Industrial) */
+    --background: #121212; /* deep charcoal / near black */
+    --foreground: #e4e4e7; /* soft warm-white text */
+    --surface: #1e1e24; /* elevated charcoal */
+    --surface-elevated: #27272a;
+    --primary: #f59e0b; /* warm amber/orange accent */
+    --primary-foreground: #121212;
+    --secondary: #27272a;
+    --muted: #a1a1aa; /* muted warm-gray */
+    --border: #3f3f46; /* subtle borders */
+    
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #3b82f6;
+
+    --chart-1: #f59e0b;
+    --chart-2: #38bdf8;
+    --chart-3: #10b981;
+  }
+
   body {
-    background-color: var(--color-industrial-bg);
-    color: var(--color-industrial-text);
+    background-color: var(--background);
+    color: var(--foreground);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -30,49 +94,9 @@
   background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-industrial-border);
+  background-color: var(--border);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-industrial-muted);
-}
-
-.speed-slider {
-  appearance: none;
-  height: 6px;
-  border-radius: 999px;
-  background: linear-gradient(
-    to right,
-    var(--color-industrial-accent) 0%,
-    var(--color-industrial-accent)
-      calc((var(--speed-progress, 1) - 0.25) / 9.75 * 100%),
-    var(--color-industrial-border)
-      calc((var(--speed-progress, 1) - 0.25) / 9.75 * 100%),
-    var(--color-industrial-border) 100%
-  );
-  cursor: pointer;
-}
-
-.speed-slider::-webkit-slider-thumb {
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 3px solid var(--color-industrial-bg);
-  border-radius: 50%;
-  background: var(--color-industrial-accent);
-  box-shadow: 0 0 0 1px var(--color-industrial-accent);
-}
-
-.speed-slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border: 3px solid var(--color-industrial-bg);
-  border-radius: 50%;
-  background: var(--color-industrial-accent);
-  box-shadow: 0 0 0 1px var(--color-industrial-accent);
-}
-
-.speed-slider:focus-visible {
-  outline: 2px solid var(--color-industrial-accent);
-  outline-offset: 4px;
+  background-color: var(--muted);
 }
